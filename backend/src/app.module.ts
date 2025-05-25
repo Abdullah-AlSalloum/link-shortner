@@ -3,6 +3,11 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { EntitiesModule } from './entities/entities.module';
+import { UrlModule } from './url/url.module';
+import { AuthModule } from './auth/auth.module';
+import { LinkModule } from './link/link.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 
 @Module({
   imports: [
@@ -23,6 +28,11 @@ import { AppService } from './app.service';
         synchronize: configService.get<boolean>('DB_SYNC', true),
       }),
     }),
+    EntitiesModule,
+    UrlModule,
+    AuthModule,
+    LinkModule,
+    AnalyticsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
