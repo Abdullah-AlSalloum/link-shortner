@@ -14,7 +14,7 @@ export class AnalyticsService {
     private linkRepository: Repository<Link>,
   ) {}
 
-  async recordClick(shortCode: string, createAnalyticsDto: CreateAnalyticsDto): Promise<Analytics> {
+  async recordClick(shortCode: string, createAnalyticsDto: CreateAnalyticsDto): Promise<Analytics | null> {
     // Find the link by short code
     const link = await this.linkRepository.findOne({
       where: { shortCode },
@@ -28,9 +28,9 @@ export class AnalyticsService {
     const analytics = new Analytics();
     analytics.linkId = link.id;
     analytics.ipAddress = createAnalyticsDto.ipAddress;
-    analytics.referrer = createAnalyticsDto.referrer;
-    analytics.userAgent = createAnalyticsDto.userAgent;
-    analytics.location = createAnalyticsDto.location;
+    analytics.referrer = createAnalyticsDto.referrer || '';
+    analytics.userAgent = createAnalyticsDto.userAgent || '';
+    analytics.location = createAnalyticsDto.location || '';
 
     return this.analyticsRepository.save(analytics);
   }

@@ -19,7 +19,7 @@ export class UrlController {
   @Get(':shortCode')
   async getOriginalUrl(@Param('shortCode') shortCode: string): Promise<{ originalUrl: string }> {
     const originalUrl = await this.urlService.getOriginalUrl(shortCode);
-    return { originalUrl };
+    return { originalUrl: originalUrl || '' };
   }
 
   @Get('guest/links')
