@@ -6,7 +6,7 @@ import { EditOutlined, DeleteOutlined, CopyOutlined } from '@ant-design/icons';
 import moment from 'moment';
 import { updateLink, deleteLink, setCurrentLink } from '../store/slices/linkSlice';
 import { getLinkAnalyticsSummary } from '../store/slices/analyticsSlice';
-import { RootState } from '../store';
+import type {RootState , AppDispatch } from '../store'; 
 
 const { Title } = Typography;
 
@@ -17,7 +17,7 @@ interface EditFormValues {
 }
 
 const LinksManagement: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { links, loading } = useSelector((state: RootState) => state.links);
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [editingLink, setEditingLink] = useState<any>(null);
@@ -46,7 +46,7 @@ const LinksManagement: React.FC = () => {
         id: editingLink.id,
         data: {
           originalUrl: values.originalUrl,
-          customShortCode: values.customShortCode,
+          shortCode: values.customShortCode,
           expiresAt: values.expiresAt ? values.expiresAt.toISOString() : undefined,
         },
       }));
@@ -122,7 +122,7 @@ const LinksManagement: React.FC = () => {
     {
       title: 'Actions',
       key: 'actions',
-      render: (_, record: any) => (
+      render: (_: unknown, record: any) => (
         <Space size="middle">
           <Button 
             icon={<CopyOutlined />} 

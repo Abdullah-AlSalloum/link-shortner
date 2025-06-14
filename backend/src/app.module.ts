@@ -14,6 +14,7 @@ import { AnalyticsModule } from './analytics/analytics.module';
     ConfigModule.forRoot({
       isGlobal: true,
     }),
+    AuthModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
@@ -33,6 +34,7 @@ import { AnalyticsModule } from './analytics/analytics.module';
     AuthModule,
     LinkModule,
     AnalyticsModule,
+    
   ],
   controllers: [AppController],
   providers: [AppService],

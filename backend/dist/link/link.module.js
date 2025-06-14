@@ -12,12 +12,13 @@ const typeorm_1 = require("@nestjs/typeorm");
 const link_service_1 = require("./link.service");
 const link_controller_1 = require("./link.controller");
 const link_entity_1 = require("../entities/link.entity");
+const auth_module_1 = require("../auth/auth.module");
 let LinkModule = class LinkModule {
 };
 exports.LinkModule = LinkModule;
 exports.LinkModule = LinkModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([link_entity_1.Link])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([link_entity_1.Link]), auth_module_1.AuthModule],
         controllers: [link_controller_1.LinkController],
         providers: [link_service_1.LinkService],
         exports: [link_service_1.LinkService],

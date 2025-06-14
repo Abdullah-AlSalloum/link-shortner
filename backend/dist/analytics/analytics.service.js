@@ -35,9 +35,9 @@ let AnalyticsService = class AnalyticsService {
         const analytics = new analytics_entity_1.Analytics();
         analytics.linkId = link.id;
         analytics.ipAddress = createAnalyticsDto.ipAddress;
-        analytics.referrer = createAnalyticsDto.referrer;
-        analytics.userAgent = createAnalyticsDto.userAgent;
-        analytics.location = createAnalyticsDto.location;
+        analytics.referrer = createAnalyticsDto.referrer || '';
+        analytics.userAgent = createAnalyticsDto.userAgent || '';
+        analytics.location = createAnalyticsDto.location || '';
         return this.analyticsRepository.save(analytics);
     }
     async getLinkAnalytics(linkId) {

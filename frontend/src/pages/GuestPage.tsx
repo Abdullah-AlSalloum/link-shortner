@@ -6,7 +6,7 @@ import { Form, Input, Button, List, Typography, Card, message, Space } from 'ant
 import { LinkOutlined, CopyOutlined } from '@ant-design/icons';
 import { useForm } from 'react-hook-form';
 import { shortenUrl, getGuestLinks } from '../store/slices/linkSlice';
-import { RootState } from '../store';
+import type { AppDispatch, RootState } from '../store';
 
 const { Title, Text } = Typography;
 
@@ -15,7 +15,7 @@ interface FormValues {
 }
 
 const GuestPage: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormValues>();
   const { guestLinks, loading, currentLink } = useSelector((state: RootState) => state.links);
   const { isAuthenticated } = useSelector((state: RootState) => state.auth);

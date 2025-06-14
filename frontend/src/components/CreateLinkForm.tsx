@@ -5,7 +5,7 @@ import { Form, Input, Button, DatePicker, Card, Typography, Alert } from 'antd';
 import { LinkOutlined } from '@ant-design/icons';
 import { useForm } from 'react-hook-form';
 import { shortenUrl } from '../store/slices/linkSlice';
-import { RootState } from '../store';
+import type { AppDispatch, RootState } from '../store';
 
 const { Title } = Typography;
 
@@ -16,7 +16,7 @@ interface FormValues {
 }
 
 const CreateLinkForm: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { register, handleSubmit, formState: { errors }, reset } = useForm<FormValues>();
   const { loading, error, currentLink } = useSelector((state: RootState) => state.links);
 

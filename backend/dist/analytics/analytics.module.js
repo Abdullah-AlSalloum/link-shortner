@@ -13,12 +13,13 @@ const analytics_service_1 = require("./analytics.service");
 const analytics_controller_1 = require("./analytics.controller");
 const analytics_entity_1 = require("../entities/analytics.entity");
 const link_entity_1 = require("../entities/link.entity");
+const auth_module_1 = require("../auth/auth.module");
 let AnalyticsModule = class AnalyticsModule {
 };
 exports.AnalyticsModule = AnalyticsModule;
 exports.AnalyticsModule = AnalyticsModule = __decorate([
     (0, common_1.Module)({
-        imports: [typeorm_1.TypeOrmModule.forFeature([analytics_entity_1.Analytics, link_entity_1.Link])],
+        imports: [typeorm_1.TypeOrmModule.forFeature([analytics_entity_1.Analytics, link_entity_1.Link]), auth_module_1.AuthModule],
         controllers: [analytics_controller_1.AnalyticsController],
         providers: [analytics_service_1.AnalyticsService],
         exports: [analytics_service_1.AnalyticsService],

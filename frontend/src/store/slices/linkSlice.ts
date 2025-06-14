@@ -8,6 +8,7 @@ interface Link {
   shortCode: string;
   createdAt: string;
   expiresAt?: string;
+  userId?: string;
 }
 
 interface LinkState {

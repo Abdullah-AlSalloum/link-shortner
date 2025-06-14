@@ -26,7 +26,7 @@ let UrlController = class UrlController {
     }
     async getOriginalUrl(shortCode) {
         const originalUrl = await this.urlService.getOriginalUrl(shortCode);
-        return { originalUrl };
+        return { originalUrl: originalUrl || '' };
     }
     async getLinksByGuestId(guestId) {
         return this.urlService.getLinksByGuestId(guestId);

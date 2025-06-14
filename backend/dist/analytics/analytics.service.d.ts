@@ -6,7 +6,7 @@ export declare class AnalyticsService {
     private analyticsRepository;
     private linkRepository;
     constructor(analyticsRepository: Repository<Analytics>, linkRepository: Repository<Link>);
-    recordClick(shortCode: string, createAnalyticsDto: CreateAnalyticsDto): Promise<Analytics>;
+    recordClick(shortCode: string, createAnalyticsDto: CreateAnalyticsDto): Promise<Analytics | null>;
     getLinkAnalytics(linkId: string): Promise<Analytics[]>;
     getAnalyticsByUserId(userId: string): Promise<any[]>;
     getAnalyticsByGuestId(guestId: string): Promise<any[]>;

@@ -16,5 +16,5 @@ export declare class AuthService {
         token: string;
     }>;
     private generateToken;
-    validateUser(userId: string): Promise<User>;
+    validateUser(userId: string): Promise<User | null>;
 }

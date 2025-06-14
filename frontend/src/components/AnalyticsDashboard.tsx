@@ -4,13 +4,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Typography, Card, Row, Col, Statistic, Table, Select } from 'antd';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import { getUserAnalytics } from '../store/slices/analyticsSlice';
-import { RootState } from '../store';
+import type { AppDispatch, RootState } from '../store';
 
 const { Title } = Typography;
 const { Option } = Select;
 
 const AnalyticsDashboard: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const { analyticsData, loading } = useSelector((state: RootState) => state.analytics);
   const [selectedLink, setSelectedLink] = React.useState<string | null>(null);
 

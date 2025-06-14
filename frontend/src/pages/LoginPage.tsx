@@ -6,7 +6,7 @@ import { Form, Input, Button, Card, Typography, Alert } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useForm } from 'react-hook-form';
 import { login } from '../store/slices/authSlice';
-import { RootState } from '../store';
+import type { AppDispatch, RootState } from '../store';
 
 const { Title } = Typography;
 
@@ -16,7 +16,7 @@ interface FormValues {
 }
 
 const LoginPage: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { register, handleSubmit, formState: { errors } } = useForm<FormValues>();
   const { loading, error, isAuthenticated } = useSelector((state: RootState) => state.auth);

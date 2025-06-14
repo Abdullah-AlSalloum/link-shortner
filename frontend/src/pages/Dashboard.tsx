@@ -13,7 +13,7 @@ import {
 import { logout } from '../store/slices/authSlice';
 import { getUserLinks } from '../store/slices/linkSlice';
 import { getUserAnalytics } from '../store/slices/analyticsSlice';
-import { RootState } from '../store';
+import type { AppDispatch, RootState } from '../store';
 import LinksManagement from '../components/LinksManagement';
 import AnalyticsDashboard from '../components/AnalyticsDashboard';
 import CreateLinkForm from '../components/CreateLinkForm';
@@ -22,7 +22,7 @@ const { Header, Sider, Content } = Layout;
 const { Title } = Typography;
 
 const Dashboard: React.FC = () => {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<AppDispatch>();
   const navigate = useNavigate();
   const { user } = useSelector((state: RootState) => state.auth);
   const [selectedKey, setSelectedKey] = useState('links');
